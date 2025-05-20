@@ -1,0 +1,25 @@
+const route = "characters";
+const host = 'https://dattebayo-api.onrender.com'
+
+fetch(`${host}/${route}`, {
+    method: "GET",
+    headers: {
+        Accept: 'application/json'
+    }
+}).then((response) => {
+    return response.json();
+}).then((data) => { 
+    console.log(data.characters[0].images[0]);
+    let characters = [];
+    let jutsus = data.characters[0].jutsu;
+
+
+  for(n = 0; n <data.characters.length; n++){
+    console.log('Personagem:',n,' - ID:',data.characters[n].id, ' - ', 'Nome:',data.characters[n].name, ' - Total Jutsus:',data.characters[n].jutsu.length);
+}
+
+})
+.catch((error) => {
+    console.log(error);
+})
+ 
